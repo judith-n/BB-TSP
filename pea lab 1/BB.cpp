@@ -284,14 +284,14 @@ void BB::algorithm()
 			distance += paths[m_cost][n_cost];
 		}
 		//zawartosc macierzy po zmianach:
-		//for (int i = 1; i <= size2; i++)
-		//{
-		//	for (int j = 1; j <= size2; j++)
-		//		if (removed_row[i] == false && removed_col[j] == false)
-		//			cout << setw(6) << paths2[i][j];
-		//	cout << endl;
-		//}
-		//cout << endl << endl;
+		for (int i = 1; i <= size2; i++)
+		{
+			for (int j = 1; j <= size2; j++)
+				if (removed_row[i] == false && removed_col[j] == false)
+					cout << setw(6) << paths2[i][j];
+			cout << endl;
+		}
+		cout << endl << endl;
 		//for (int i = 1; i <= size; i++)
 		//{
 		//	for (int j = 1; j <= size; j++)
@@ -334,6 +334,18 @@ void BB::algorithm()
 	int tmp;
 	int z = 1;
 	int m = 0;
+	//wyznaczenie LB
+	int max_l = 0;
+	for (int i = 0; i < 2; i++)
+	{
+		for (int j = 0; j < 2; j++)
+		{
+			if (paths2[r[i]][c[j]] != 0 && paths2[r[i]][c[j]] <101 && paths2[r[i]][c[j]] > max_l)
+				max_l = paths2[r[i]][c[j]];
+		}
+	}
+	LBl[size - 2] = LBl[size - 3] + max_l;
+	LBr[size - 2] = LBl[size - 3] + max;
 	int* visited = new int[size];
 	for (int i = 1; i <= size; i++)
 		visited[i] = false;
