@@ -20,12 +20,14 @@ BB::BB(int n)
 	removed_col = new bool[size];
 	removed_row = new bool[size];
 	route = new int[size];
+	route2 = new int[size];
 	for (int i = 1; i <= size; i++)
 		for (int j = 1; j <= size; j++)
 		{
 			removed_col[j] = false;
 			removed_row[j] = false;
 			route[j] = 0;
+			route2[j] = 0;
 		}
 	for (int i = 0; i < size; i++)
 	{
@@ -88,6 +90,7 @@ void BB::algorithm()
 	int *column = new int[size2];
 	int distance = 0;
 	int licznik = 0;
+	///////////////////////////////////////////////////////////////////////////////////////////////////
 	while (licznik <size - 2)
 	{
 		//int minw = 999;
@@ -105,8 +108,6 @@ void BB::algorithm()
 				{
 					row[i] = 0;
 				}
-		
-
 			}
 			cout << "wiersze:" << row[i];
 		}
@@ -355,7 +356,6 @@ void BB::algorithm()
 		tmp = route[z];
 		visited[tmp] = true;
 		z = tmp;
-
 	}
 
 	for (int i = 1; i <= size; i++)
@@ -380,10 +380,13 @@ void BB::algorithm()
 		distance += paths[r[0]][c[1]];
 		distance += paths[r[1]][c[0]];
 	}
+
+	////////////////////////////////////////////////////////////////////////////////////////////////
 	LB = distance;
+	//zapamietanie dotychczas najlepszej trasy
 	//sprawdzanie czy ktoreœ lb bylo mniejsze 
-	for (int i = 1; i < size; i++)
-		if (LBr[i] < LB)
+	//for (int i = 1; i < size; i++)
+		//if (LBr[i] < LB)//zosta³o wykryte mniejsze lb
 
 	//wyswietlanie wynikow:
 	cout << "najkrotsza sciezka wg metody podzialu i ograniczen:\n";
@@ -393,7 +396,7 @@ void BB::algorithm()
 	for (int i = 1; i <= size; i++)
 	{
 		cout << j << " --- ";
-		j = route[j];
+		j = route2[j];
 	}
 	cout << "1";
 	cout << endl;

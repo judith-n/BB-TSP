@@ -8,6 +8,7 @@ public:
 	int** paths;
 	int** paths2;
 	int* route;
+	int* route2;
 	int* LBr;
 	int* LBl;
 	int LB;
