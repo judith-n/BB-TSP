@@ -380,6 +380,10 @@ void BB::algorithm()
 		distance += paths[r[0]][c[1]];
 		distance += paths[r[1]][c[0]];
 	}
+	LB = distance;
+	//sprawdzanie czy ktoreœ lb bylo mniejsze 
+	for (int i = 1; i < size; i++)
+		if (LBr[i] < LB)
 
 	//wyswietlanie wynikow:
 	cout << "najkrotsza sciezka wg metody podzialu i ograniczen:\n";

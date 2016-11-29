@@ -10,6 +10,7 @@ public:
 	int* route;
 	int* LBr;
 	int* LBl;
+	int LB;
 	//bool** blocked;
 	bool* removed_col;
 	bool* removed_row;
