@@ -355,6 +355,7 @@ void BB::algorithm()
 		tmp = route[z];
 		visited[tmp] = true;
 		z = tmp;
+
 	}
 
 	for (int i = 1; i <= size; i++)
